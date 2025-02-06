@@ -1,0 +1,25 @@
+stages:
+  - build
+  - test
+  - deploy
+
+# Build Stage
+build:
+  stage: build
+  script:
+    - echo "Installing dependencies..."
+    - npm install
+
+# Test Stage
+test:
+  stage: test
+  script:
+    - echo "Running tests..."
+    - npm test
+
+# Deploy Stage
+deploy:
+  stage: deploy
+  script:
+    - echo "Deploying to GCP..."
+    - npm start
