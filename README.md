@@ -41,16 +41,76 @@ This project covers four key areas of DevOps:
 
 Actions Workflow:
 
-name: CI/CD Pipeline
-on: [push]
-jobs:
-  build:
+    name: CI/CD Pipeline
+
+    on: [push]
+
+    jobs:
+
+        build:
+
     runs-on: ubuntu-latest
+    
     steps:
+    
       - name: Checkout Code
+      
         uses: actions/checkout@v2
+      
       - name: Install Dependencies
+      
         run: npm install
+      
       - name: Run Tests
-        run: npm test
+              run: npm test
+
+# 3. Security & Compliance (ISO, GDPR, SOC 2)
+
+Identified Security Risks & Mitigations
+
+Risk |  Mitigation
+
+Unauthenticated Access | Implemented IAM policies
+
+Data Exposure | Used encryption & HTTPS
+
+Lack of Monitoring | Enabled logging & alerts
+
+# Compliance Alignment
+
+• ISO 27001: Data encryption and access control.
+
+• GDPR: Ensured data protection policies.
+
+• SOC 2: Configured logging and monitoring.
+
+# 4. Monitoring & Logging (Prometheus & Grafana)
+
+4.1 Steps Implemented
+
+4.2 Installed Prometheus on the GCP instance.
+
+4.3 Configured Prometheus by editing prometheus.yml.
+
+4.4 Installed Grafana and set up data visualization.
+
+4.5 Created alerts and dashboards for real-time monitoring.
+
+# Prometheus Configuration (prometheus.yml)
+
+    global:
+          scrape_interval: 15s
+    scrape_configs:
+     - job_name: "prometheus"
+      static_configs:
+        - targets: ["localhost:9090"]
+
+Running Prometheus:
+
+    cd ~/prometheus-*
+     ./prometheus --config.file=prometheus.yml
+
+Running Grafana:
+
+    sudo systemctl start grafana-server
 
